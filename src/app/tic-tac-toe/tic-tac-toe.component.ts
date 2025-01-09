@@ -1,4 +1,3 @@
-import { isNgTemplate } from '@angular/compiler';
 import { Component } from '@angular/core';
 
 @Component({
@@ -11,7 +10,7 @@ export class TicTacToeComponent {
   xIsNext: boolean = true;
   winner: string | null = null;
 
-  //Status of game {winner,loser}
+  //Status of game {winner, draw}
   get status(): string {
     if (this.winner) {
       return `Winner: ${this.winner}`;
@@ -22,7 +21,7 @@ export class TicTacToeComponent {
     }
   }
 
-  //Whenever user make moves its calculate whether the game ends or not
+  //Whenever user makes move it checks if the square is empty
   makeMove(index: number): void {
     if (!this.squares[index]) {
       this.squares[index] = !this.xIsNext ? 'X' : 'O';
